@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数字文化——这个圈子 | 深度项目汇报</title>
+    <title>数字文化——这个圈子 | 终极汇报</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
@@ -11,10 +11,11 @@
         :root {
             --apple-blue: #0071e3;
             --apple-red: #ff3b30;
+            --apple-bg: #000000;
         }
 
         body {
-            background-color: #000;
+            background-color: var(--apple-bg);
             color: #fff;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow-x: hidden;
@@ -33,7 +34,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 4rem 2rem;
+            padding: 6rem 2rem;
             text-align: center;
         }
 
@@ -53,12 +54,8 @@
             backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 32px;
-            transition: transform 0.3s ease;
-        }
-
-        .glass-card:hover {
-            transform: scale(1.02);
-            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            text-align: left;
         }
 
         .sticky-nav {
@@ -71,19 +68,46 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .line-growth {
-            height: 2px;
-            background: var(--apple-blue);
-            width: 0;
-            transition: width 2s ease;
+        .highlight-blue { color: var(--apple-blue); }
+        .highlight-red { color: var(--apple-red); }
+
+        .hero-title {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 800;
+            letter-spacing: -0.05em;
         }
 
-        .active .line-growth {
+        /* 场景切换动画 */
+        .scenario-content {
+            display: none;
+            opacity: 0;
+            transform: scale(0.98);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .scenario-content.active {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: black;
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+        }
+
+        /* 优化清单样式 */
+        .plan-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
-        }
-
-        .sub-text {
-            color: #86868b;
+            max-width: 800px;
+            margin-bottom: 0.75rem;
         }
     </style>
 </head>
@@ -92,271 +116,304 @@
     <!-- 导航栏 -->
     <nav class="sticky-nav py-4 px-8 flex justify-between items-center">
         <div class="font-bold text-xl tracking-tight">数字文化 <span class="font-light text-gray-500">| 这个圈子</span></div>
-        <div class="hidden md:flex space-x-8 text-sm text-gray-400">
-            <a href="#problem" class="hover:text-white transition">发现问题</a>
-            <a href="#research" class="hover:text-white transition">调查问题</a>
-            <a href="#solution" class="hover:text-white transition">解决问题</a>
-            <a href="#product" class="hover:text-white transition">展示产品</a>
+        <div class="hidden lg:flex space-x-6 text-xs text-gray-400 uppercase tracking-widest">
+            <a href="#intro" class="hover:text-white transition">开篇</a>
+            <a href="#analogy" class="hover:text-white transition">隐喻</a>
+            <a href="#investigation" class="hover:text-white transition">调研</a>
+            <a href="#interview" class="hover:text-white transition">访谈</a>
+            <a href="#persona" class="hover:text-white transition">画像与痛点</a>
+            <a href="#scenario" class="hover:text-white transition">使用场景</a>
+            <a href="#architecture" class="hover:text-white transition">产品架构</a>
         </div>
-        <div class="text-xs text-gray-500">福大至诚学院 · 项目组</div>
+        <div class="text-xs text-gray-500">福大至诚学院 · 23级项目组</div>
     </nav>
 
-    <!-- 1. Hero: 引入概念 -->
-    <section class="section-center relative">
+    <!-- SECTION 1: 开篇 -->
+    <section id="intro" class="section-center relative">
         <div class="z-10 reveal">
-            <h2 class="text-sm font-semibold tracking-widest text-blue-500 mb-6 uppercase">校园文化初步观察笔记</h2>
-            <h1 class="text-7xl md:text-9xl font-bold apple-gradient-text leading-tight tracking-tighter">这个圈子。</h1>
-            <p class="text-2xl md:text-3xl text-gray-400 mt-8 max-w-3xl mx-auto font-light leading-relaxed">
-                从“量子纠缠”到“社交磁场”<br>
-                一场关于认同建构与参与式文化的数字革命
-            </p>
+            <h2 class="text-sm font-semibold tracking-[0.5em] text-blue-500 mb-6 uppercase">校园文化初步观察笔记</h2>
+            <h1 class="hero-title apple-gradient-text leading-none">这个圈子</h1>
+            <p class="text-xl md:text-2xl text-gray-500 mt-12 font-light">不仅仅是一个词，而是一个引力场。</p>
         </div>
     </section>
 
-    <!-- 2. 发现问题: 物理磁场与社交隔阂 -->
-    <section id="problem" class="section-center bg-[#050505]">
-        <div class="max-w-5xl w-full reveal">
-            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">PART 01 / 发现问题</h2>
-            <h3 class="text-5xl md:text-7xl font-bold mb-16">社交也有磁场。</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
-                <div class="glass-card p-10">
-                    <h4 class="text-2xl font-bold mb-4">右手螺旋定则</h4>
-                    <p class="sub-text leading-relaxed">
-                        当“同频者”的电流汇聚，会激发出强大的精神引力。就像王楚钦与孙颖莎的默契，这种“量子纠缠”般的吸引，让空间阻隔消失。
+    <!-- SECTION 2: 物理与社会学隐喻 -->
+    <section id="analogy" class="section-center bg-[#050505]">
+        <div class="max-w-6xl w-full reveal text-center">
+            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">ANALOGY / 物理与社会学隐喻</h2>
+            <h3 class="text-4xl md:text-6xl font-bold mb-16 tracking-tighter">从安培定则到种姓制度。</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-card">
+                    <h4 class="text-2xl font-bold italic mb-6">磁场与同频者</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        正如<span class="text-white font-bold">右手螺旋定则</span>，电流激发出磁场。王楚钦与孙颖莎的默契即是超越语言的“量子纠缠”，这种精神共鸣让空间的阻隔瞬间消失。
                     </p>
                 </div>
-                <div class="glass-card p-10">
-                    <h4 class="text-2xl font-bold mb-4">隐形的“婆罗门”</h4>
-                    <p class="sub-text leading-relaxed">
-                        圈层即阶级。从首陀罗到婆罗门，不同圈层的社交法则筑起了高墙。新人在“舒适区”外徘徊，无法逾越无形的门槛。
+                <div class="glass-card">
+                    <h4 class="text-2xl font-bold italic mb-6">圈层即阶级</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        从<span class="text-blue-400 font-bold">婆罗门</span>到<span class="text-red-400 font-bold">首陀罗</span>，阶级的高墙由黑话与规则筑成。我们在算法茧房中沉溺，像被<span class="text-white font-bold">温水煮青蛙</span>一般失去了对外界的感知。
                     </p>
                 </div>
-                <div class="glass-card p-10 col-span-1 md:col-span-2">
-                    <div class="flex flex-col md:flex-row items-center gap-8">
-                        <div class="flex-1">
-                            <h4 class="text-2xl font-bold mb-4">温水煮青蛙</h4>
-                            <p class="sub-text">
-                                大数据推荐机制将我们锁在“茧房”中。在这个时代，加入一个群组极其容易，但“进群即沉默”已成为对热爱最大的抹杀。
-                            </p>
-                        </div>
-                        <div class="px-8 py-4 border border-red-500/30 rounded-2xl text-red-500 text-center">
-                            <span class="text-4xl font-bold italic">“进群即死”</span><br>
-                            <span class="text-xs uppercase tracking-widest">痛点核心</span>
-                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: 沉浸式调研 -->
+    <section id="investigation" class="section-center">
+        <div class="max-w-6xl w-full reveal text-left">
+            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">INVESTIGATION / 深度调研</h2>
+            <h3 class="text-4xl md:text-6xl font-bold mb-12 tracking-tighter text-center">寻找校园里的“精神角落”。</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+                <div class="p-8 bg-white/5 rounded-3xl border border-white/10">
+                    <h4 class="font-bold text-blue-400 mb-4 text-xl">街舞社</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">具身传播：认同感来自舞房里共同挥洒的汗水与即兴的 Moment。认同是在“行动中”做出来的。</p>
+                </div>
+                <div class="p-8 bg-white/5 rounded-3xl border border-white/10">
+                    <h4 class="font-bold text-blue-400 mb-4 text-xl">动漫社</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">文化标识：通过“谷子”、“设子”构建身份识别，在亚文化标识中寻找精神避风港。</p>
+                </div>
+                <div class="p-8 bg-white/5 rounded-3xl border border-white/10">
+                    <h4 class="font-bold text-blue-400 mb-4 text-xl">书法国风社</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">仪式感：通过汉服与书法重构古典的参与式仪式，将同好关系升华为群体信仰。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: 访谈原声 -->
+    <section id="interview" class="section-center bg-[#050505]">
+        <div class="max-w-6xl w-full reveal">
+            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">VOX POPULI / 访谈原声</h2>
+            <h3 class="text-4xl md:text-6xl font-bold mb-16 text-center">听见“圈子”的声音。</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-12">
+                <div class="glass-card">
+                    <h4 class="text-xl font-bold mb-4 highlight-blue text-center">访谈场景回顾</h4>
+                    <div class="text-xs space-y-4 text-gray-400 mt-6">
+                        <p>• <span class="text-white">场景一：接头现场。</span> 记录社员使用专属符号沟通的瞬间。</p>
+                        <p>• <span class="text-white">场景二：精神角落。</span> 在舞房、活动室专注且放松的姿态。</p>
+                        <p>• <span class="text-white">场景三：线上线下重合。</span> 当线上的暗语在线下活动中转化为共鸣。</p>
+                    </div>
+                </div>
+                <div class="glass-card flex flex-col justify-center items-center text-center">
+                    <h4 class="text-xl font-bold mb-6 highlight-blue font-mono">“真正的圈子”</h4>
+                    <p class="text-sm italic text-gray-300">“不是因为兴趣而聚在一起，是因为聚在一起才有了兴趣。”</p>
+                    <div class="mt-8 flex flex-wrap justify-center gap-2">
+                        <span class="text-[10px] border border-gray-700 px-3 py-1 rounded-full uppercase">价值共鸣</span>
+                        <span class="text-[10px] border border-gray-700 px-3 py-1 rounded-full uppercase">精神契约</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. 调查问题: 沉浸式调研 -->
-    <section id="research" class="section-center">
+    <!-- SECTION 5: 用户画像与痛点 -->
+    <section id="persona" class="section-center">
         <div class="max-w-6xl w-full reveal">
-            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">PART 02 / 调查问题</h2>
-            <h3 class="text-5xl md:text-7xl font-bold mb-16">在现场，捕捉瞬间。</h3>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="glass-card p-6 text-left">
-                    <div class="text-3xl font-bold text-white mb-2">3个样本</div>
-                    <p class="text-sm sub-text">街舞社、动漫社、书法国风社</p>
-                </div>
-                <div class="glass-card p-6 text-left">
-                    <div class="text-3xl font-bold text-white mb-2">2类用户</div>
-                    <p class="text-sm sub-text">深度圈内人 vs 预备役同好</p>
-                </div>
-                <div class="glass-card p-6 text-left">
-                    <div class="text-3xl font-bold text-white mb-2">1个真相</div>
-                    <p class="text-sm sub-text">认同感是在互动中“做出来”的</p>
-                </div>
-            </div>
-
-            <div class="glass-card p-10 text-left bg-white/5 border-white/20">
-                <h4 class="text-2xl font-bold mb-6">深度访谈洞察</h4>
-                <ul class="space-y-6">
-                    <li class="flex items-start gap-4">
-                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></div>
-                        <div>
-                            <p class="font-bold">认知壁垒</p>
-                            <p class="text-sm sub-text">新人害怕因为不懂“黑话”（如谷子、设子、形制）而被嫌弃，存在显著的“融入焦虑”。</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></div>
-                        <div>
-                            <p class="font-bold">文化稀释</p>
-                            <p class="text-sm sub-text">核心社员反映，现有的QQ/微信群涌入大量“沉默者”，导致深度内容被淹没。</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></div>
-                        <div>
-                            <p class="font-bold">情感共鸣</p>
-                            <p class="text-sm sub-text">成员最怀念线下相聚时的“精神角落”，但这些记忆在碎片化的聊天记录中极易丢失。</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. 解决问题: 创新逻辑 -->
-    <section id="solution" class="section-center bg-white text-black">
-        <div class="max-w-4xl w-full reveal">
-            <h2 class="text-xs font-bold text-blue-600 mb-4 tracking-[0.3em]">PART 03 / 解决问题</h2>
-            <h3 class="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">始于兴趣，合于验证。</h3>
-            <p class="text-xl text-gray-600 font-medium mb-16">
-                通过“轻门槛验证”作为筛选器，将人流转化为同好的引力场。
-            </p>
-
+            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">PERSONA & PAINPOINTS / 画像与痛点</h2>
+            <h3 class="text-4xl md:text-6xl font-bold mb-16 tracking-tighter text-center">谁在寻找，又在为什么焦虑？</h3>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                <!-- 圈内人 -->
                 <div>
-                    <h4 class="text-3xl font-bold mb-4">轻门槛验证</h4>
-                    <p class="text-gray-500 leading-relaxed">不再是无意义的审核。2-3道基于基础认知的选择题，是进入圈子的“成人礼”，也是真诚交流的入场券。</p>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-bold">核</div>
+                        <h3 class="text-3xl font-bold italic">深度圈内人</h3>
+                    </div>
+                    <div class="glass-card mb-6">
+                        <p class="text-xs font-bold text-blue-500 uppercase mb-4">行为特征</p>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                            大学生(18-25岁)，社团骨干。熟悉黑话，主动创作舞蹈/摄影内容，希望在专业领域深度交流。
+                        </p>
+                        <div class="border-t border-white/5 pt-4">
+                            <p class="text-xs font-bold text-red-500 uppercase mb-4">痛点分析</p>
+                            <ul class="text-xs text-gray-400 space-y-3">
+                                <li>• <span class="text-white font-medium">文化稀释：</span>大量潜水者涌入导致深度内容被淹没。</li>
+                                <li>• <span class="text-white font-medium">资产零散：</span>QQ群聊记录易丢失，难以沉淀集体记忆。</li>
+                                <li>• <span class="text-white font-medium">联动弱：</span>线下活动组织成本高，缺乏闭环工具。</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                <!-- 预备役 -->
                 <div>
-                    <h4 class="text-3xl font-bold mb-4">黑话卡片</h4>
-                    <p class="text-gray-500 leading-relaxed">打破认知壁垒。将碎片化的术语转化为可阅读、可沉淀的文化符号，让新人平滑度过新手期。</p>
-                </div>
-                <div>
-                    <h4 class="text-3xl font-bold mb-4">社群叙事</h4>
-                    <p class="text-gray-500 leading-relaxed">不仅是聊天工具。将线下活动、作品展示转化为可视化的“社群叙事空间”，沉淀集体记忆。</p>
-                </div>
-                <div>
-                    <h4 class="text-3xl font-bold mb-4">线上线下闭环</h4>
-                    <p class="text-gray-500 leading-relaxed">从线上的“文化验证”到线下的“活动撮合”，形成稳定的社群生态，让热爱真正落地。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. 展示产品: UI与架构 -->
-    <section id="product" class="section-center bg-[#000]">
-        <div class="max-w-6xl w-full reveal">
-            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">PART 04 / 展示产品</h2>
-            <h3 class="text-6xl md:text-8xl font-bold mb-16 apple-gradient-text">一个垂直的社区。</h3>
-
-            <!-- 核心功能架构展示 -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
-                <div class="glass-card p-6 border-blue-500/20">
-                    <span class="block text-blue-500 font-bold mb-2">发现层</span>
-                    <span class="text-xs sub-text">首页推荐/广场</span>
-                </div>
-                <div class="glass-card p-6 border-blue-500/20">
-                    <span class="block text-blue-500 font-bold mb-2">入圈层</span>
-                    <span class="text-xs sub-text">验证/规则/作品</span>
-                </div>
-                <div class="glass-card p-6 border-blue-500/20">
-                    <span class="block text-blue-500 font-bold mb-2">互动层</span>
-                    <span class="text-xs sub-text">论坛/聊天室/相册</span>
-                </div>
-                <div class="glass-card p-6 border-blue-500/20">
-                    <span class="block text-blue-500 font-bold mb-2">个人层</span>
-                    <span class="text-xs sub-text">资产/消息/身份卡</span>
-                </div>
-            </div>
-
-            <!-- UI 改进细节 -->
-            <div class="text-left max-w-3xl mx-auto">
-                <h4 class="text-2xl font-bold mb-8 text-center">UI 体验优化清单</h4>
-                <div class="space-y-4">
-                    <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-2xl border border-gray-800">
-                        <span>视觉一致性：增强与校园元素关联</span>
-                        <span class="text-green-500 text-sm">DONE</span>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center font-bold">潜</div>
+                        <h3 class="text-3xl font-bold italic text-red-500">预备役同好</h3>
                     </div>
-                    <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-2xl border border-gray-800">
-                        <span>信息主次：卡片形态适配不同场景</span>
-                        <span class="text-green-500 text-sm">DONE</span>
-                    </div>
-                    <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-2xl border border-gray-800">
-                        <span>互动细节：调整头像占比，优化留白</span>
-                        <span class="text-green-500 text-sm">DONE</span>
-                    </div>
-                    <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-2xl border border-gray-800">
-                        <span>时效性：优先展示活跃线下活动</span>
-                        <span class="text-green-500 text-sm">DONE</span>
-                    </div>
-                    <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-2xl border border-gray-800">
-                        <span>门槛机制：进退圈设置冷静期</span>
-                        <span class="text-yellow-500 text-sm font-bold">NEW</span>
+                    <div class="glass-card mb-6">
+                        <p class="text-xs font-bold text-red-500 uppercase mb-4">行为特征</p>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                            对领域有好奇(如B站围观)，但未找到组织。害怕说错话被排斥，对成熟圈子有“融入焦虑”。
+                        </p>
+                        <div class="border-t border-white/5 pt-4">
+                            <p class="text-xs font-bold text-red-500 uppercase mb-4">痛点分析</p>
+                            <ul class="text-xs text-gray-400 space-y-3">
+                                <li>• <span class="text-white font-medium">认知壁垒：</span>术语规则分散，新人不了解“暗语”。</li>
+                                <li>• <span class="text-white font-medium">融入尴尬：</span>面对成熟社交网络，新人不知如何开启对话。</li>
+                                <li>• <span class="text-white font-medium">进群即死：</span>因缺乏引导，加入即沦为永久“潜水者”。</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. 结尾: 愿景与团队 -->
-    <section class="section-center">
-        <div class="reveal">
-            <h2 class="text-4xl md:text-6xl font-bold mb-12">从“圈外”到“圈内”。</h2>
-            <p class="text-xl text-gray-500 max-w-2xl mx-auto mb-16 font-light">
-                我们不只是在做一个网页，我们是在为每一个小众的灵魂，在数字丛林中寻找那块磁场相合的“精神角落”。
-            </p>
+    <!-- SECTION 6: 使用场景 (平滑切换版) -->
+    <section id="scenario" class="section-center bg-[#050505]">
+        <div class="max-w-6xl w-full reveal text-center">
+            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">USER SCENARIO / 使用场景</h2>
+            <h3 class="text-4xl md:text-6xl font-bold mb-16 italic">平滑的身份再生。</h3>
+
+            <!-- 切换标签 -->
+            <div class="flex justify-center gap-4 mb-16">
+                <button onclick="switchScenario(1)" id="tab-1" class="tab-btn active px-6 py-3 rounded-full bg-white/5 border border-white/10 text-xs font-bold transition-all duration-300">探秘与入伙</button>
+                <button onclick="switchScenario(2)" id="tab-2" class="tab-btn px-6 py-3 rounded-full bg-white/5 border border-white/10 text-xs font-bold transition-all duration-300">深度交流</button>
+                <button onclick="switchScenario(3)" id="tab-3" class="tab-btn px-6 py-3 rounded-full bg-white/5 border border-white/10 text-xs font-bold transition-all duration-300">活动闭环</button>
+            </div>
+
+            <!-- 内容区 -->
+            <div class="relative min-h-[400px]">
+                <!-- 场景 1 -->
+                <div id="content-1" class="scenario-content active glass-card max-w-4xl mx-auto border-l-8 border-blue-600">
+                    <h4 class="text-3xl font-bold mb-6">场景一：预备役小陈的入伙</h4>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        大一新生小陈，是个国漫迷。他想加入国风社但担心自己只是“看番的”融不进圈子。
+                        在平台主页，他发现了<span class="text-white font-bold">“入圈指南”</span>，用卡片解释了汉服形制与常用语。
+                        小陈点击“加入”，完成了两道简单的验证题后，立刻收到了学长的热情安利，融入焦虑瞬间瓦解。
+                    </p>
+                </div>
+                <!-- 场景 2 -->
+                <div id="content-2" class="scenario-content glass-card max-w-4xl mx-auto border-l-8 border-gray-600">
+                    <h4 class="text-3xl font-bold mb-6">场景二：队长扒舞与职业训练</h4>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        Popping 队长想找人扒一段新舞。他在论坛发布帖子并附上链接，迅速得到资深成员从技术风格角度的专业回复。
+                        讨论高效且深入。随后他在聊天室一键发起<span class="text-white font-bold">周末队训接龙</span>，并同步到公共相册，沉淀为社群的技术档案。
+                    </p>
+                </div>
+                <!-- 场景 3 -->
+                <div id="content-3" class="scenario-content glass-card max-w-4xl mx-auto border-l-8 border-green-600">
+                    <h4 class="text-3xl font-bold mb-6">场景三：漫展活动与集体记忆</h4>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        动漫社计划漫展组队。负责人在聊天室发起活动，成员报名、讨论角色。
+                        活动当天，大家通过聊天室实时分享位置。活动结束，精彩瞬间上传至<span class="text-white font-bold">公共相册</span>，成为社团文化的新篇章。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: 产品架构与优化 -->
+    <section id="architecture" class="section-center">
+        <div class="max-w-5xl w-full reveal">
+            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">ARCHITECTURE / 软件架构图</h2>
+            <h3 class="text-4xl md:text-6xl font-bold mb-16 text-center tracking-tighter">“始于兴趣，合于验证，久于同频”。</h3>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-xs text-gray-600">
-                <div>
-                    <p class="font-bold text-gray-300 mb-1">策划与文案</p>
-                    <p>张梦淋 / 陈婷婷</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-32">
+                <div class="p-6 bg-gray-900 rounded-3xl border border-white/5 text-left h-full">
+                    <span class="text-[10px] text-gray-500 uppercase font-bold block mb-4">L1 发现层</span>
+                    <p class="text-sm font-bold mb-4">首页推荐广场</p>
+                    <ul class="text-[10px] text-gray-500 space-y-1">
+                        <li>• 网站介绍</li>
+                        <li>• 热门讨论流</li>
+                    </ul>
                 </div>
-                <div>
-                    <p class="font-bold text-gray-300 mb-1">调研与统筹</p>
-                    <p>李雨彤 / 杨诗真 / 刘依琳</p>
+                <div class="p-6 bg-blue-600 rounded-3xl text-left h-full shadow-2xl">
+                    <span class="text-[10px] text-white/50 uppercase font-bold block mb-4">L2 入圈层</span>
+                    <p class="text-sm font-bold mb-4">轻门槛验证</p>
+                    <ul class="text-[10px] text-white/70 space-y-1">
+                        <li>• 文化背景介绍</li>
+                        <li>• 黑话卡片/术语百科</li>
+                        <li>• 2-3道兴趣验证题</li>
+                    </ul>
                 </div>
-                <div>
-                    <p class="font-bold text-gray-300 mb-1">设计与开发</p>
-                    <p>张心如 / 林晓雨</p>
+                <div class="p-6 bg-white/10 rounded-3xl text-left h-full">
+                    <span class="text-[10px] text-gray-500 uppercase font-bold block mb-4">L3 互动层</span>
+                    <p class="text-sm font-bold mb-4">沉浸式社群</p>
+                    <ul class="text-[10px] text-gray-500 space-y-1">
+                        <li>• 圈子论坛 (深讨论)</li>
+                        <li>• 活动组织/实时聊天</li>
+                        <li>• 公共相册库</li>
+                    </ul>
                 </div>
-                <div>
-                    <p class="font-bold text-gray-300 mb-1">汇报呈现</p>
-                    <p>韦馨</p>
+                <div class="p-6 bg-gray-900 rounded-3xl border border-white/5 text-left h-full">
+                    <span class="text-[10px] text-gray-500 uppercase font-bold block mb-4">L4 个人层</span>
+                    <p class="text-sm font-bold mb-4">数字资产管理</p>
+                    <ul class="text-[10px] text-gray-500 space-y-1">
+                        <li>• 成员身份卡</li>
+                        <li>• 我的圈子/消息中心</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- UI 体验优化清单 -->
+            <div class="mt-32 w-full reveal">
+                <h4 class="text-3xl font-bold mb-12 text-center">UI 体验优化清单</h4>
+                <div class="flex flex-col items-center">
+                    <div class="plan-card">
+                        <span class="text-base text-gray-200">视觉一致性：增强与校园元素关联</span>
+                        <span class="text-green-500 font-bold text-xs tracking-widest">DONE</span>
+                    </div>
+                    <div class="plan-card">
+                        <span class="text-base text-gray-200">信息主次：卡片形态适配不同场景</span>
+                        <span class="text-green-500 font-bold text-xs tracking-widest">DONE</span>
+                    </div>
+                    <div class="plan-card">
+                        <span class="text-base text-gray-200">互动细节：调整头像占比，优化留白</span>
+                        <span class="text-green-500 font-bold text-xs tracking-widest">DONE</span>
+                    </div>
+                    <div class="plan-card">
+                        <span class="text-base text-gray-200">时效性：优先展示活跃线下活动</span>
+                        <span class="text-green-500 font-bold text-xs tracking-widest">DONE</span>
+                    </div>
+                    <div class="plan-card">
+                        <span class="text-base text-gray-200">门槛机制：进退圈设置冷静期</span>
+                        <span class="text-yellow-500 font-bold text-xs tracking-widest">NEW</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-900 text-center text-gray-700 text-[10px] tracking-widest uppercase">
-        <p>福州大学至诚学院 · 数字文化课程项目 · 2026</p>
-        <p class="mt-2 text-gray-800">Built with Cursor & AI Assistance</p>
+    <footer class="py-24 border-t border-gray-900 text-center">
+        <div class="reveal">
+            <h2 class="text-4xl md:text-6xl font-bold mb-12 italic">让热爱，在数字时代共生。</h2>
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-[10px] text-gray-600 uppercase tracking-widest">
+                <span>统筹：刘依琳</span><span>策划：张梦淋</span><span>调研：李雨彤 / 杨诗真</span>
+                <span>设计：张心如 / 林晓雨</span><span>文案：陈婷婷</span><span>汇报：韦馨</span>
+            </div>
+            <p class="mt-16 text-[8px] text-gray-800 tracking-[0.3em]">福州大学至诚学院 · 数字文化项目 · 2026</p>
+        </div>
     </footer>
 
     <script>
-        // 滚动揭幕动画逻辑
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // 滚动显示动画
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // 导航栏交互
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            const nav = document.querySelector('.sticky-nav');
-            
-            if (currentScroll <= 0) {
-                nav.classList.remove('opacity-0');
-                return;
-            }
-            
-            if (currentScroll > lastScroll) {
-                nav.style.transform = 'translateY(-100%)';
-            } else {
-                nav.style.transform = 'translateY(0)';
-            }
-            lastScroll = currentScroll;
-        });
+        // 场景切换逻辑
+        function switchScenario(index) {
+            // 切换按钮状态
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`tab-${index}`).classList.add('active');
+
+            // 切换内容状态
+            document.querySelectorAll('.scenario-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            setTimeout(() => {
+                document.getElementById(`content-${index}`).classList.add('active');
+            }, 50);
+        }
     </script>
 </body>
 </html>
