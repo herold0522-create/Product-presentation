@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字文化——这个圈子 | 深度项目汇报</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --apple-blue: #0071e3;
+            --apple-red: #ff3b30;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .apple-gradient-text {
+            background: linear-gradient(180deg, #fff 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .line-growth {
+            height: 2px;
+            background: var(--apple-blue);
+            width: 0;
+            transition: width 2s ease;
+        }
+
+        .active .line-growth {
+            width: 100%;
+        }
+
+        .sub-text {
+            color: #86868b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="sticky-nav py-4 px-8 flex justify-between items-center">
+        <div class="font-bold text-xl tracking-tight">数字文化 <span class="font-light text-gray-500">| 这个圈子</span></div>
+        <div class="hidden md:flex space-x-8 text-sm text-gray-400">
+            <a href="#problem" class="hover:text-white transition">发现问题</a>
+            <a href="#research" class="hover:text-white transition">调查问题</a>
+            <a href="#solution" class="hover:text-white transition">解决问题</a>
+            <a href="#product" class="hover:text-white transition">展示产品</a>
+        </div>
+        <div class="text-xs text-gray-500">福大至诚学院 · 项目组</div>
+    </nav>
+
+    <!-- 1. Hero: 引入概念 -->
+    <section class="section-center relative">
+        <div class="z-10 reveal">
+            <h2 class="text-sm font-semibold tracking-widest text-blue-500 mb-6 uppercase">校园文化初步观察笔记</h2>
+            <h1 class="text-7xl md:text-9xl font-bold apple-gradient-text leading-tight tracking-tighter">这个圈子。</h1>
+            <p class="text-2xl md:text-3xl text-gray-400 mt-8 max-w-3xl mx-auto font-light leading-relaxed">
+                从“量子纠缠”到“社交磁场”<br>
+                一场关于认同建构与参与式文化的数字革命
+            </p>
+        </div>
+    </section>
+
+    <!-- 2. 发现问题: 物理磁场与社交隔阂 -->
+    <section id="problem" class="section-center bg-[#050505]">
+        <div class="max-w-5xl w-full reveal">
+            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">PART 01 / 发现问题</h2>
+            <h3 class="text-5xl md:text-7xl font-bold mb-16">社交也有磁场。</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
+                <div class="glass-card p-10">
+                    <h4 class="text-2xl font-bold mb-4">右手螺旋定则</h4>
+                    <p class="sub-text leading-relaxed">
+                        当“同频者”的电流汇聚，会激发出强大的精神引力。就像王楚钦与孙颖莎的默契，这种“量子纠缠”般的吸引，让空间阻隔消失。
+                    </p>
+                </div>
+                <div class="glass-card p-10">
+                    <h4 class="text-2xl font-bold mb-4">隐形的“婆罗门”</h4>
+                    <p class="sub-text leading-relaxed">
+                        圈层即阶级。从首陀罗到婆罗门，不同圈层的社交法则筑起了高墙。新人在“舒适区”外徘徊，无法逾越无形的门槛。
+                    </p>
+                </div>
+                <div class="glass-card p-10 col-span-1 md:col-span-2">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-1">
+                            <h4 class="text-2xl font-bold mb-4">温水煮青蛙</h4>
+                            <p class="sub-text">
+                                大数据推荐机制将我们锁在“茧房”中。在这个时代，加入一个群组极其容易，但“进群即沉默”已成为对热爱最大的抹杀。
+                            </p>
+                        </div>
+                        <div class="px-8 py-4 border border-red-500/30 rounded-2xl text-red-500 text-center">
+                            <span class="text-4xl font-bold italic">“进群即死”</span><br>
+                            <span class="text-xs uppercase tracking-widest">痛点核心</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 调查问题: 沉浸式调研 -->
+    <section id="research" class="section-center">
+        <div class="max-w-6xl w-full reveal">
+            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">PART 02 / 调查问题</h2>
+            <h3 class="text-5xl md:text-7xl font-bold mb-16">在现场，捕捉瞬间。</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="glass-card p-6 text-left">
+                    <div class="text-3xl font-bold text-white mb-2">3个样本</div>
+                    <p class="text-sm sub-text">街舞社、动漫社、书法国风社</p>
+                </div>
+                <div class="glass-card p-6 text-left">
+                    <div class="text-3xl font-bold text-white mb-2">2类用户</div>
+                    <p class="text-sm sub-text">深度圈内人 vs 预备役同好</p>
+                </div>
+                <div class="glass-card p-6 text-left">
+                    <div class="text-3xl font-bold text-white mb-2">1个真相</div>
+                    <p class="text-sm sub-text">认同感是在互动中“做出来”的</p>
+                </div>
+            </div>
+
+            <div class="glass-card p-10 text-left bg-white/5 border-white/20">
+                <h4 class="text-2xl font-bold mb-6">深度访谈洞察</h4>
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></div>
+                        <div>
+                            <p class="font-bold">认知壁垒</p>
+                            <p class="text-sm sub-text">新人害怕因为不懂“黑话”（如谷子、设子、形制）而被嫌弃，存在显著的“融入焦虑”。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></div>
+                        <div>
+                            <p class="font-bold">文化稀释</p>
+                            <p class="text-sm sub-text">核心社员反映，现有的QQ/微信群涌入大量“沉默者”，导致深度内容被淹没。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></div>
+                        <div>
+                            <p class="font-bold">情感共鸣</p>
+                            <p class="text-sm sub-text">成员最怀念线下相聚时的“精神角落”，但这些记忆在碎片化的聊天记录中极易丢失。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 解决问题: 创新逻辑 -->
+    <section id="solution" class="section-center bg-white text-black">
+        <div class="max-w-4xl w-full reveal">
+            <h2 class="text-xs font-bold text-blue-600 mb-4 tracking-[0.3em]">PART 03 / 解决问题</h2>
+            <h3 class="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">始于兴趣，合于验证。</h3>
+            <p class="text-xl text-gray-600 font-medium mb-16">
+                通过“轻门槛验证”作为筛选器，将人流转化为同好的引力场。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                <div>
+                    <h4 class="text-3xl font-bold mb-4">轻门槛验证</h4>
+                    <p class="text-gray-500 leading-relaxed">不再是无意义的审核。2-3道基于基础认知的选择题，是进入圈子的“成人礼”，也是真诚交流的入场券。</p>
+                </div>
+                <div>
+                    <h4 class="text-3xl font-bold mb-4">黑话卡片</h4>
+                    <p class="text-gray-500 leading-relaxed">打破认知壁垒。将碎片化的术语转化为可阅读、可沉淀的文化符号，让新人平滑度过新手期。</p>
+                </div>
+                <div>
+                    <h4 class="text-3xl font-bold mb-4">社群叙事</h4>
+                    <p class="text-gray-500 leading-relaxed">不仅是聊天工具。将线下活动、作品展示转化为可视化的“社群叙事空间”，沉淀集体记忆。</p>
+                </div>
+                <div>
+                    <h4 class="text-3xl font-bold mb-4">线上线下闭环</h4>
+                    <p class="text-gray-500 leading-relaxed">从线上的“文化验证”到线下的“活动撮合”，形成稳定的社群生态，让热爱真正落地。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 展示产品: UI与架构 -->
+    <section id="product" class="section-center bg-[#000]">
+        <div class="max-w-6xl w-full reveal">
+            <h2 class="text-xs font-bold text-blue-500 mb-4 tracking-[0.3em]">PART 04 / 展示产品</h2>
+            <h3 class="text-6xl md:text-8xl font-bold mb-16 apple-gradient-text">一个垂直的社区。</h3>
+
+            <!-- 核心功能架构展示 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+                <div class="glass-card p-6 border-blue-500/20">
+                    <span class="block text-blue-500 font-bold mb-2">发现层</span>
+                    <span class="text-xs sub-text">首页推荐/广场</span>
+                </div>
+                <div class="glass-card p-6 border-blue-500/20">
+                    <span class="block text-blue-500 font-bold mb-2">入圈层</span>
+                    <span class="text-xs sub-text">验证/规则/作品</span>
+                </div>
+                <div class="glass-card p-6 border-blue-500/20">
+                    <span class="block text-blue-500 font-bold mb-2">互动层</span>
+                    <span class="text-xs sub-text">论坛/聊天室/相册</span>
+                </div>
+                <div class="glass-card p-6 border-blue-500/20">
+                    <span class="block text-blue-500 font-bold mb-2">个人层</span>
+                    <span class="text-xs sub-text">资产/消息/身份卡</span>
+                </div>
+            </div>
+
+            <!-- UI 改进细节 -->
+            <div class="text-left max-w-3xl mx-auto">
+                <h4 class="text-2xl font-bold mb-8 text-center">UI 体验优化清单</h4>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-2xl border border-gray-800">
+                        <span>视觉一致性：增强与校园元素关联</span>
+                        <span class="text-green-500 text-sm">DONE</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-2xl border border-gray-800">
+                        <span>信息主次：卡片形态适配不同场景</span>
+                        <span class="text-green-500 text-sm">DONE</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-2xl border border-gray-800">
+                        <span>互动细节：调整头像占比，优化留白</span>
+                        <span class="text-green-500 text-sm">DONE</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-2xl border border-gray-800">
+                        <span>时效性：优先展示活跃线下活动</span>
+                        <span class="text-green-500 text-sm">DONE</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-2xl border border-gray-800">
+                        <span>门槛机制：进退圈设置冷静期</span>
+                        <span class="text-yellow-500 text-sm font-bold">NEW</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 结尾: 愿景与团队 -->
+    <section class="section-center">
+        <div class="reveal">
+            <h2 class="text-4xl md:text-6xl font-bold mb-12">从“圈外”到“圈内”。</h2>
+            <p class="text-xl text-gray-500 max-w-2xl mx-auto mb-16 font-light">
+                我们不只是在做一个网页，我们是在为每一个小众的灵魂，在数字丛林中寻找那块磁场相合的“精神角落”。
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-xs text-gray-600">
+                <div>
+                    <p class="font-bold text-gray-300 mb-1">策划与文案</p>
+                    <p>张梦淋 / 陈婷婷</p>
+                </div>
+                <div>
+                    <p class="font-bold text-gray-300 mb-1">调研与统筹</p>
+                    <p>李雨彤 / 杨诗真 / 刘依琳</p>
+                </div>
+                <div>
+                    <p class="font-bold text-gray-300 mb-1">设计与开发</p>
+                    <p>张心如 / 林晓雨</p>
+                </div>
+                <div>
+                    <p class="font-bold text-gray-300 mb-1">汇报呈现</p>
+                    <p>韦馨</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-900 text-center text-gray-700 text-[10px] tracking-widest uppercase">
+        <p>福州大学至诚学院 · 数字文化课程项目 · 2024</p>
+        <p class="mt-2 text-gray-800">Built with Cursor & AI Assistance</p>
+    </footer>
+
+    <script>
+        // 滚动揭幕动画逻辑
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 导航栏交互
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const nav = document.querySelector('.sticky-nav');
+            
+            if (currentScroll <= 0) {
+                nav.classList.remove('opacity-0');
+                return;
+            }
+            
+            if (currentScroll > lastScroll) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
